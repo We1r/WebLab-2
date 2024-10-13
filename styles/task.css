@@ -1,0 +1,58 @@
+.task {
+    display: flex;
+    width: 862px;
+    height: 180px;
+    background: rgba(36, 35, 32, 1);
+    border-radius: 20px;
+    border: 5px solid #ff8303;
+    color: #f0e3ca;
+    padding: 20px;
+}
+
+.textArea {
+    width: 662px;
+    height: 116px;
+    display: flex;
+    justify-content: center ;
+    flex-direction: column;
+    padding: 10px;
+    background: none;
+}
+
+.task h1 {
+    font-size: 55px;
+    margin: 0;
+    background: none;
+}
+
+.task h2 {
+    font-size: 35px;
+    margin: 5px 0 0 0;
+    background: none;
+}
+
+.dellButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 5px solid #ff8303;
+    background: #1b1a17;
+    width: 80px;
+    height: 80px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.dellButton:active {
+    background: rgba(36, 35, 32, 1);
+}
+
+.dellButton:active img {
+    background: rgba(36, 35, 32, 1);
+}
+
+.dellButton img {
+    width: 26px;
+    height: 26px;
+}
