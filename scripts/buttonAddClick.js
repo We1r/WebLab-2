@@ -11,22 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   zeroTask.style.display = "block";
 
-  document.getElementById("addButton").addEventListener("click", function () {
-    var title = titleInput.value.trim();
-    var body = bodyInput.value.trim();
+  function loadTasks() {
+    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.forEach(task => {
+      addTaskToDOM(task.title, task.body, task.id);
+    });
+  }
 
-    if (title === "") {
-      alert("Give a name to your task!");
-      return;
-    }
-
+  function addTaskToDOM(title, body, taskId) {
     zeroTask.style.display = "none";
 
     var openTools = document.createElement("div");
     openTools.classList.add("openTools");
 
-    var newTask = document.createElement("task");
-    newTask.classList.add("task");
+    openTools.setAttribute("data-task-id", taskId);
+
+    var newTask = document.createElement("div");
+    newTask.classList.add("task", "fadeInScale");
     newTask.innerHTML = `
       <div class="textArea">
         <h1>${title}</h1>
@@ -41,20 +42,43 @@ document.addEventListener("DOMContentLoaded", function () {
     taskContainer.appendChild(openTools);
     newTask.style.display = "flex";
 
-    titleInput.value = "";
-    bodyInput.value = "";
-
     newTask.querySelector(".dellButton").addEventListener("click", function () {
-      taskContainer.removeChild(openTools);
+      var deleteTaskEvent = new CustomEvent("deleteTask", {detail: openTools});
 
-      if (taskContainer.querySelectorAll(".openTools").length === 0) {
-        zeroTask.style.display = "block";
-      }
+      document.dispatchEvent(deleteTaskEvent);
     });
 
     newTask.addEventListener("click", function () {
       var openTaskEvent = new CustomEvent("openTask", {detail: openTools});
+      
       document.dispatchEvent(openTaskEvent);
     });
+  }
+
+  document.getElementById("addButton").addEventListener("click", function () {
+    var title = titleInput.value.trim();
+    var body = bodyInput.value.trim();
+
+    if (title === "") {
+      alert("Give a name to your task!");
+      return;
+    }
+
+    zeroTask.style.display = "none";
+
+    var taskId = "task_" + Date.now();
+
+    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.push({ id: taskId, title: title, body: body});
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+    addTaskToDOM(title, body, taskId);
+
+    titleInput.value = "";
+    bodyInput.value = "";
+
+    
   });
+
+  loadTasks();
 });

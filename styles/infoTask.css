@@ -1,0 +1,97 @@
+.infoContainer {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.infoIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  
+    width: 900px;
+    height: 1128px;
+    background: #1b1a17;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.infoArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    width: 810px;
+    height: 1038px;
+}
+
+.infoArea input,
+.infoArea textarea {
+  border-radius: 10px;
+  border: 3px solid #ff8303;
+  background: rgba(36, 35, 32, 1);
+}
+
+.infoArea input,
+.infoArea textarea {
+  padding: 25px;
+  color: #f0e3ca;;
+  font-size: 42px;
+}
+
+.infoArea input:focus,
+.infoArea textarea:focus {
+    outline: none;
+    background: #1b1a17;
+}
+
+.miniInput {
+    width: 810px;
+    height: 80px;
+}
+
+.maxInput {
+    width: 810px;
+    height: 856px;
+}
+
+.buttonInfo {
+    display: flex;
+    justify-content: space-around;
+
+    width: 810px;
+    height: 60px;
+}
+
+.buttonInfo button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 260px;
+    height: 60px;
+    border-radius: 10px;
+    border: 3px solid #ff8303;
+    background: rgba(36, 35, 32, 1);
+  }
+  
+  .buttonInfo button:active {
+    background: #1b1a17;
+    border: 3px solid#a35709;
+  }
+  
+  .buttonInfo p {
+    font-size: 25px;
+    background: none;
+    color: white;
+  }

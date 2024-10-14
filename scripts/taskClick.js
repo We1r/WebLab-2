@@ -1,44 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("openTask", function (event) {
-    var openTools = event.detail; // Это весь блок openTools
+    var openTools = event.detail;
+    var taskId = openTools.getAttribute("data-task-id");
 
-    var existingTools = openTools.querySelector(".tools"); // Ищем, есть ли уже кнопки
+    var existingTools = openTools.querySelector(".tools");
 
-    // Если инструменты уже существуют
     if (existingTools) {
-      // Добавляем/удаляем классы для анимации
       if (existingTools.classList.contains("expanded")) {
         existingTools.classList.remove("expanded");
         existingTools.classList.add("collapsed");
         
-        // Удаление инструмента после окончания анимации сворачивания
         setTimeout(() => {
           existingTools.remove();
-        }, 500); // Соответствует времени анимации в CSS (0.5s)
+        }, 500);
       } else {
         existingTools.classList.remove("collapsed");
         existingTools.classList.add("expanded");
       }
-      return; // Просто сворачиваем/разворачиваем, если кнопки уже были созданы
+      return;
     }
 
-    // Создаем новый блок tools, если его не было
     var tools = document.createElement("div");
-    tools.classList.add("tools", "collapsed"); // Начальное состояние — свернуто
+    tools.classList.add("tools", "collapsed");
 
     tools.innerHTML = `
-        <button><img src="images/svg/Share.svg" alt="share"></button>
-        <button><img src="images/svg/i.svg" alt="info"></button>
-        <button><img src="images/svg/Edit.svg" alt="edit"></button>
+        <button class="shareButton"><img src="images/svg/Share.svg" alt="share"></button>
+        <button class="infoButton"><img src="images/svg/i.svg" alt="info"></button>
+        <button class="editButton"><img src="images/svg/Edit.svg" alt="edit"></button>
     `;
 
-    // Добавляем инструменты в openTools (под задачей)
     openTools.appendChild(tools);
 
-    // Для анимации плавного раскрытия
+    tools.querySelector(".editButton").addEventListener("click", function () {
+      var taskTitle = openTools.querySelector("h1").textContent;
+      var taskBody = openTools.querySelector("h2").textContent;
+
+      console.log("Editing task: ", taskTitle, taskBody);
+
+      var editTaskEvent = new CustomEvent("editTask", { detail: {title: taskTitle, body: taskBody } });
+
+      document.dispatchEvent(editTaskEvent);
+    });
+
+    tools.querySelector(".infoButton").addEventListener("click", function () {
+      console.log("infoButton clicked");
+      var infoTaskEvent = new CustomEvent("infoTask", { detail: { taskId: taskId } });
+
+      document.dispatchEvent(infoTaskEvent);
+    });
+
+    tools.querySelector(".shareButton").addEventListener("click", function () {
+      var shareTaskEvent = new CustomEvent("shareTask" , { detail: {taskId: taskId} });
+
+      document.dispatchEvent(shareTaskEvent);
+    });
+
     setTimeout(function () {
       tools.classList.remove("collapsed");
       tools.classList.add("expanded");
-    }, 10); // Задержка для запуска анимации после добавления в DOM
+    }, 10);
   });
 });

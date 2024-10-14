@@ -1,0 +1,83 @@
+.editContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.editIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 768px;
+  height: 450px;
+  background: #1b1a17;
+  border-radius: 10px;
+}
+
+.editInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 346px;
+  font-size: 42px;
+}
+
+.editInputs input {
+  padding: 25px;
+  color: white;
+  font-size: 42px;
+}
+
+.editInputs input:focus {
+  outline: none;
+  background: #1b1a17;
+}
+
+.editIcon input {
+  width: 668px;
+  height: 80px;
+  border-radius: 10px;
+  border: 3px solid #ff8303;
+  background: rgba(36, 35, 32, 1);
+}
+
+.editSaveButtons {
+  display: flex;
+  justify-content: space-between;
+
+  width: 346px;
+  height: 60px;
+}
+
+.editSaveButtons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 160px;
+  height: 60px;
+  border-radius: 10px;
+  border: 3px solid #ff8303;
+  background: rgba(36, 35, 32, 1);
+}
+
+.editSaveButtons button:active {
+  background: #1b1a17;
+  border: 3px solid#a35709;
+}
+
+.editSaveButtons p {
+  font-size: 25px;
+  background: none;
+  color: white;
+}

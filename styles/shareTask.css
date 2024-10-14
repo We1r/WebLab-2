@@ -1,0 +1,59 @@
+.shareContainer {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.shareIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+
+  width: 900px;
+  height: 190px;
+  background: #1b1a17;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.shareButtons {
+  display: flex;
+  justify-content: space-between;
+
+  width: 800px;
+  height: 120px;
+}
+
+.shareButtons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 120px;
+  border-radius: 200px;
+  border: none;
+  background: rgba(36, 35, 32, 1);
+  cursor: pointer;
+}
+
+.shareButtons button:active {
+    background: #1b1a17;
+    border: solid rgba(36, 35, 32, 1);
+}
+
+.shareButtons img {
+  width: 52px;
+  height: 52px;
+  background: none;
+}

@@ -24,9 +24,7 @@
   border: 3px 0px;
 }
 
-.inputs input,
-.inputs select,
-.inputs textarea {
+.inputs input {
   padding: 25px;
   color: #f0e3ca;
 }
