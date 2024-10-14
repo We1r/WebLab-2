@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
         shareContainer.innerHTML = `
         <div class="shareIcon">
             <div class="shareButtons">
-                <button class="copyButton"><img src="images/svg/Copy.svg" alt="Copy"></button>
-                <button class="vkButton"><img src="images/svg/vk.svg" alt="vk"></button>
-                <button class="telegramButton"><img src="images/svg/telegram.svg" alt="telegram"></button>
-                <button class="whatsappButton"><img src="images/svg/whatsapp.svg" alt="whatsapp"></button>
-                <button class="facebookButton"><img src="images/svg/facebook.svg" alt="facebook"></button>
+                <button class="copyButton"><img src="./images/svg/Copy.svg" alt="Copy"></button>
+                <button class="vkButton"><img src="./images/svg/vk.svg" alt="vk"></button>
+                <button class="telegramButton"><img src="./images/svg/telegram.svg" alt="telegram"></button>
+                <button class="whatsappButton"><img src="./images/svg/whatsapp.svg" alt="whatsapp"></button>
+                <button class="facebookButton"><img src="./images/svg/facebook.svg" alt="facebook"></button>
             </div>
         </div>
         `

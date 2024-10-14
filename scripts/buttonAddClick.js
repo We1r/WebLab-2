@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <h2>${body}</h2>
       </div>
       <button class="dellButton">
-        <img src="images/svg/Cross.svg" alt="cross">
+        <img src="./images/svg/Cross.svg" alt="cross">
       </button>
     `;
 

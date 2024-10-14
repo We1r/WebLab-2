@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
     tools.classList.add("tools", "collapsed");
 
     tools.innerHTML = `
-        <button class="shareButton"><img src="images/svg/Share.svg" alt="share"></button>
-        <button class="infoButton"><img src="images/svg/i.svg" alt="info"></button>
-        <button class="editButton"><img src="images/svg/Edit.svg" alt="edit"></button>
+        <button class="shareButton"><img src="./images/svg/Share.svg" alt="share"></button>
+        <button class="infoButton"><img src="./images/svg/i.svg" alt="info"></button>
+        <button class="editButton"><img src="./images/svg/Edit.svg" alt="edit"></button>
     `;
 
     openTools.appendChild(tools);
