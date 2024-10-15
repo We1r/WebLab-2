@@ -12,3 +12,5 @@ npm install
 node server.js
 
 p.s Это всё вообще не обязательно, html файл и так всё сохраняет и выводит без сервера.
+
+Ссылка на декомпозицию проекта и диаграмму ганта: https://docs.google.com/spreadsheets/d/1jz8YpqWZHYtCCjdYRM4aTzyQBb1IQocqmDrMFOKx5Ck/edit?usp=sharing

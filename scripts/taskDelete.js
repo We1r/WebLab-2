@@ -13,31 +13,53 @@ document.addEventListener("DOMContentLoaded", function () {
             <hr class="hr" />
             <p>Delete the task?</p>
             <div class="deleteButtons">
-                <button class="yesButton"><p>Yes</p></button>
-                <button class="noButton"><p>No</p></button>
+              <button class="noButton"><p>No</p></button>
+              <button class="yesButton"><p>Yes</p></button>
             </div>
         </div>
         `;
     document.body.appendChild(deleteContainer);
 
-    deleteContainer.querySelector(".yesButton").addEventListener("click", function () {
-      openTools.classList.add("fadeOutScale");
-
-      openTools.addEventListener("animationend", function () {
-        taskContainer.removeChild(openTools);
-
-        deleteTaskFromStorage(taskId);
+    function yesButton() {
+      deleteIcon.classList.add("fadeOutScale");
   
-        if (taskContainer.querySelectorAll(".openTools").length === 0) {
-          zeroTask.style.display = "block";
-        }
-      }, { once: true });
+        deleteIcon.addEventListener("animationend", function () {
+          document.body.removeChild(deleteContainer);
+  
+          openTools.classList.add("fadeOutScale");
+        }, { once: true });
+  
+        openTools.addEventListener("animationend", function () {
+          taskContainer.removeChild(openTools);
+  
+          deleteTaskFromStorage(taskId);
+    
+          if (taskContainer.querySelectorAll(".openTools").length === 0) {
+            zeroTask.style.display = "block";
+            zeroTask.classList.add("fadeInScale");
+          }
+        }, { once: true });
+    }
 
-      document.body.removeChild(deleteContainer);
+    var deleteIcon =  document.querySelector(".deleteIcon");
+    deleteIcon.classList.add("fadeInScale")
+    
+    deleteContainer.querySelector(".yesButton").addEventListener("click", function () {
+      yesButton();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        yesButton();
+      }
     });
 
     deleteContainer.querySelector(".noButton").addEventListener("click", function () {
-      document.body.removeChild(deleteContainer);
+      deleteIcon.classList.add("fadeOutScale");
+
+      deleteIcon.addEventListener("animationend", function () {
+        document.body.removeChild(deleteContainer);
+      }, { once: true });
     });
   });
 
@@ -46,5 +68,5 @@ document.addEventListener("DOMContentLoaded", function () {
     var updatedTasks = tasks.filter(task => task.id !== taskId);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
-  
+
 });

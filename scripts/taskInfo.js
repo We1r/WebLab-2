@@ -24,26 +24,41 @@ document.addEventListener("DOMContentLoaded", function () {
     var savedMaxInput = localStorage.getItem(`maxInput_${taskId}`);
 
     if (savedMiniInput) {
-        infoContainer.querySelector(".miniInput").value = savedMiniInput;
-      }
-      if (savedMaxInput) {
-        infoContainer.querySelector(".maxInput").value = savedMaxInput;
-      }
-    
+      infoContainer.querySelector(".miniInput").value = savedMiniInput;
+    }
+    if (savedMaxInput) {
+      infoContainer.querySelector(".maxInput").value = savedMaxInput;
+    }
+
     document.body.appendChild(infoContainer);
 
-    infoContainer.querySelector(".infoSave").addEventListener("click", function () {
-        var miniInputValue = infoContainer.querySelector(".miniInput").value;
-        var maxInputValue = infoContainer.querySelector(".maxInput").value;
+    var infoIcon = document.querySelector(".infoIcon");
+    infoIcon.classList.add("fadeInScale");
 
-        localStorage.setItem(`miniInput_${taskId}`, miniInputValue);
-        localStorage.setItem(`maxInput_${taskId}`, maxInputValue);
-        
-        document.body.removeChild(infoContainer);
-    });
+    infoContainer
+      .querySelector(".infoSave")
+      .addEventListener("click", function () {
+        infoIcon.classList.add("fadeOutScale");
 
-    infoContainer.querySelector(".infoCancel").addEventListener("click", function () {
-        document.body.removeChild(infoContainer);
-    });
+        infoIcon.addEventListener("animationend", function () {
+          document.body.removeChild(infoContainer);
+
+          var miniInputValue = infoContainer.querySelector(".miniInput").value;
+          var maxInputValue = infoContainer.querySelector(".maxInput").value;
+
+          localStorage.setItem(`miniInput_${taskId}`, miniInputValue);
+          localStorage.setItem(`maxInput_${taskId}`, maxInputValue);
+        });
+      });
+
+    infoContainer
+      .querySelector(".infoCancel")
+      .addEventListener("click", function () {
+        infoIcon.classList.add("fadeOutScale");
+
+        infoIcon.addEventListener("animationend", function () {
+          document.body.removeChild(infoContainer);
+        });
+      });
   });
 });

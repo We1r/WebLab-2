@@ -19,33 +19,41 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         </div>
         `;
-
         document.body.appendChild(editContainer);
-        console.log("Edit container added to DOM");
+        
+        var editIcon = document.querySelector(".editIcon");
+        editIcon.classList.add("fadeInScale");
 
         editContainer.querySelector(".saveEditButton").addEventListener("click", function () {
-          var newTitle = editContainer.querySelector(".editTitleInput").value;
-          var newBody = editContainer.querySelector(".editBodyInput").value;
-
-          console.log("New values: ", newTitle, newBody);
-      
-          var openTools = document.querySelector('.tools').parentNode;
-          var taskTitle = openTools.querySelector("h1");
-          var taskBody = openTools.querySelector("h2");
-      
-          if (taskTitle && taskBody) {
-            taskTitle.textContent = newTitle;
-            taskBody.textContent = newBody;
-            console.log("Task updated successfully");
-
-            updateTaskInStorage(openTools.getAttribute("data-task-id"), newTitle, newBody);
-          }
-      
-          document.body.removeChild(editContainer);
+          editIcon.classList.add("fadeOutScale");
+          
+          editIcon.addEventListener("animationend", function () {
+            document.body.removeChild(editContainer);
+            var newTitle = editContainer.querySelector(".editTitleInput").value;
+            var newBody = editContainer.querySelector(".editBodyInput").value;
+  
+            console.log("New values: ", newTitle, newBody);
+        
+            var openTools = document.querySelector('.tools').parentNode;
+            var taskTitle = openTools.querySelector("h1");
+            var taskBody = openTools.querySelector("h2");
+        
+            if (taskTitle && taskBody) {
+              taskTitle.textContent = newTitle;
+              taskBody.textContent = newBody;
+              console.log("Task updated successfully");
+  
+              updateTaskInStorage(openTools.getAttribute("data-task-id"), newTitle, newBody);
+            }
+          }, { once: true });
       });
 
         editContainer.querySelector(".cancelEditButton").addEventListener("click", function () {
-          document.body.removeChild(editContainer);
+          editIcon.classList.add("fadeOutScale");
+          
+          editIcon.addEventListener("animationend", function () {
+            document.body.removeChild(editContainer);
+          }, { once: true });
         });
     });
 

@@ -48,7 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
       document.dispatchEvent(deleteTaskEvent);
     });
 
-    newTask.addEventListener("click", function () {
+    newTask.addEventListener("click", function (event) {
+      if (event.target.closest('.dellButton')) {
+        return;
+      }
+      
       var openTaskEvent = new CustomEvent("openTask", {detail: openTools});
       
       document.dispatchEvent(openTaskEvent);
@@ -76,9 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     titleInput.value = "";
     bodyInput.value = "";
-
-    
   });
-
   loadTasks();
 });
