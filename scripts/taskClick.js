@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (existingTools.classList.contains("expanded")) {
         existingTools.classList.remove("expanded");
         existingTools.classList.add("collapsed");
-        
+
         setTimeout(() => {
           existingTools.remove();
         }, 500);
@@ -37,20 +37,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
       console.log("Editing task: ", taskTitle, taskBody);
 
-      var editTaskEvent = new CustomEvent("editTask", { detail: {title: taskTitle, body: taskBody } });
+      var editTaskEvent = new CustomEvent("editTask", {
+        detail: { title: taskTitle, body: taskBody },
+      });
 
       document.dispatchEvent(editTaskEvent);
     });
 
     tools.querySelector(".infoButton").addEventListener("click", function () {
       console.log("infoButton clicked");
-      var infoTaskEvent = new CustomEvent("infoTask", { detail: { taskId: taskId } });
+      var infoTaskEvent = new CustomEvent("infoTask", {
+        detail: { taskId: taskId },
+      });
 
       document.dispatchEvent(infoTaskEvent);
     });
 
     tools.querySelector(".shareButton").addEventListener("click", function () {
-      var shareTaskEvent = new CustomEvent("shareTask" , { detail: {taskId: taskId} });
+      var shareTaskEvent = new CustomEvent("shareTask", {
+        detail: { taskId: taskId },
+      });
 
       document.dispatchEvent(shareTaskEvent);
     });

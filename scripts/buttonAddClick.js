@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   zeroTask.style.display = "block";
 
   function loadTasks() {
-    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.forEach(task => {
+    var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach((task) => {
       addTaskToDOM(task.title, task.body, task.id);
     });
   }
@@ -43,18 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
     newTask.style.display = "flex";
 
     newTask.querySelector(".dellButton").addEventListener("click", function () {
-      var deleteTaskEvent = new CustomEvent("deleteTask", {detail: openTools});
+      var deleteTaskEvent = new CustomEvent("deleteTask", {
+        detail: openTools,
+      });
 
       document.dispatchEvent(deleteTaskEvent);
     });
 
     newTask.addEventListener("click", function (event) {
-      if (event.target.closest('.dellButton')) {
+      if (event.target.closest(".dellButton")) {
         return;
       }
-      
-      var openTaskEvent = new CustomEvent("openTask", {detail: openTools});
-      
+
+      var openTaskEvent = new CustomEvent("openTask", { detail: openTools });
+
       document.dispatchEvent(openTaskEvent);
     });
   }
@@ -72,10 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var taskId = "task_" + Date.now();
 
-    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.push({ id: taskId, title: title, body: body});
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    
+    var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push({ id: taskId, title: title, body: body });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     addTaskToDOM(title, body, taskId);
 
     titleInput.value = "";

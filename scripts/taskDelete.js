@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var openTools = event.detail;
     var taskId = openTools.getAttribute("data-task-id");
     var deleteContainer = document.createElement("div");
-        deleteContainer.classList.add("deleteContainer");
+    deleteContainer.classList.add("deleteContainer");
 
-        deleteContainer.innerHTML = `
+    deleteContainer.innerHTML = `
         <div class="deleteIcon">
             <hr class="hr" />
             <p>Delete the task?</p>
@@ -22,31 +22,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function yesButton() {
       deleteIcon.classList.add("fadeOutScale");
-  
-        deleteIcon.addEventListener("animationend", function () {
+
+      deleteIcon.addEventListener(
+        "animationend",
+        function () {
           document.body.removeChild(deleteContainer);
-  
+
           openTools.classList.add("fadeOutScale");
-        }, { once: true });
-  
-        openTools.addEventListener("animationend", function () {
+        },
+        { once: true }
+      );
+
+      openTools.addEventListener(
+        "animationend",
+        function () {
           taskContainer.removeChild(openTools);
-  
+
           deleteTaskFromStorage(taskId);
-    
+
           if (taskContainer.querySelectorAll(".openTools").length === 0) {
             zeroTask.style.display = "block";
             zeroTask.classList.add("fadeInScale");
           }
-        }, { once: true });
+        },
+        { once: true }
+      );
     }
 
-    var deleteIcon =  document.querySelector(".deleteIcon");
-    deleteIcon.classList.add("fadeInScale")
-    
-    deleteContainer.querySelector(".yesButton").addEventListener("click", function () {
-      yesButton();
-    });
+    var deleteIcon = document.querySelector(".deleteIcon");
+    deleteIcon.classList.add("fadeInScale");
+
+    deleteContainer
+      .querySelector(".yesButton")
+      .addEventListener("click", function () {
+        yesButton();
+      });
 
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
@@ -54,19 +64,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    deleteContainer.querySelector(".noButton").addEventListener("click", function () {
-      deleteIcon.classList.add("fadeOutScale");
+    deleteContainer
+      .querySelector(".noButton")
+      .addEventListener("click", function () {
+        deleteIcon.classList.add("fadeOutScale");
 
-      deleteIcon.addEventListener("animationend", function () {
-        document.body.removeChild(deleteContainer);
-      }, { once: true });
-    });
+        deleteIcon.addEventListener(
+          "animationend",
+          function () {
+            document.body.removeChild(deleteContainer);
+          },
+          { once: true }
+        );
+      });
   });
 
   function deleteTaskFromStorage(taskId) {
-    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    var updatedTasks = tasks.filter(task => task.id !== taskId);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    var updatedTasks = tasks.filter((task) => task.id !== taskId);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
-
 });

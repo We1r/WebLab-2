@@ -48,8 +48,8 @@
 }
 
 .shareButtons button:active {
-    background: #1b1a17;
-    border: solid rgba(36, 35, 32, 1);
+  background: #1b1a17;
+  border: solid rgba(36, 35, 32, 1);
 }
 
 .shareButtons img {
