@@ -21,7 +21,7 @@
   overflow: auto;
 
   width: 900px;
-  height: 1128px;
+  height: 928px;
   background: #1b1a17;
   border-radius: 20px 20px 0px 0px;
 }
@@ -32,7 +32,7 @@
   justify-content: space-between;
 
   width: 810px;
-  height: 1038px;
+  height: 838px;
 }
 
 .infoArea input,
@@ -62,7 +62,7 @@
 
 .maxInput {
   width: 810px;
-  height: 856px;
+  height: 656px;
 }
 
 .buttonInfo {
