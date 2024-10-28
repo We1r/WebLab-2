@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="editIcon">
       <hr class="hr">
       <div class="editInputs">
-        <input class="editTitleInput" type="text" value="${taskData.title}" required>
-        <input class="editBodyInput" type="text" value="${taskData.body}" required>
+        <input class="editTitleInput" type="text" maxlength="20" value="${taskData.title}" required>
+        <input class="editBodyInput" type="text" maxlength="33" value="${taskData.body}" required>
       </div>
       <div class="editSaveButtons">
         <button class="saveEditButton"><p>Save</p></button>
